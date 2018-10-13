@@ -79,9 +79,12 @@ public class Floor {
 
     public void waitForElevator(Passenger passenger, int destinationFloor) {
         if (destinationFloor > this.myFloorNumber) {
+            passenger.waitForElevator(destinationFloor);
             this.upwardBound.add(passenger);
+
         }
         if (destinationFloor < this.myFloorNumber) {
+            passenger.waitForElevator(destinationFloor);
             this.downwardBound.add(passenger);
         }
     }

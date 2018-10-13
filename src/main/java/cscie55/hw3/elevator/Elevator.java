@@ -109,7 +109,7 @@ public class Elevator {
                 try {
                     Passenger p = it.next();
                     p.boardElevator();
-                    this.addToCount(p.getDestinationFloor());
+                    this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
                 }
                 catch(ElevatorFullException e) {
                     break;

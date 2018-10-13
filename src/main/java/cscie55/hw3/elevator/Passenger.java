@@ -28,8 +28,8 @@ public class Passenger {
 
     }
 
-    public void waitForElevator(Passenger passenger, int newDestinationFloor) {
-        passenger.destinationFloor = newDestinationFloor;
+    public void waitForElevator(int newDestinationFloor) {
+        this.destinationFloor = newDestinationFloor;
     }
 
     public void boardElevator() {
