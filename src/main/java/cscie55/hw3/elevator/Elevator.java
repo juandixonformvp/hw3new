@@ -102,9 +102,16 @@ public class Elevator {
 //        }
 
         myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
-        Set tempResidents = myBuilding.getFloor(this.currentFloor).getResidents();
-        if (!tempResidents.isEmpty() && this.countPassengers() < CAPACITY) {
-            Iterator<Passenger> it = tempResidents.iterator();
+        Set<Passenger> tempBoarders = new HashSet<>();
+        if (this.goingUp()) {
+            tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+        }
+        else {
+            tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+        }
+
+        if (!tempBoarders.isEmpty() && this.countPassengers() < CAPACITY) {
+            Iterator<Passenger> it = tempBoarders.iterator();
             while(it.hasNext()){
                 try {
                     Passenger p = it.next();
@@ -162,13 +169,6 @@ public class Elevator {
         for (Floor tempFloor : myBuilding.allFloorsArray) {
             mergedSet.addAll(tempFloor.getUpwardBound());
             mergedSet.addAll(tempFloor.getDownwardBound());
-        }
-        Iterator<Passenger> it = mergedSet.iterator();
-        while(it.hasNext()){
-            Passenger p = it.next();
-            if (p.getCurrentFloor() == this.currentFloor) {
-                it.remove();
-            }
         }
         return mergedSet;
 
