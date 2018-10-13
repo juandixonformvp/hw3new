@@ -88,7 +88,7 @@ public class Elevator {
 
         myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
         int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
-        if(numWaitingOnFloor > 0 && this.getPassengers() < CAPACITY) {  // loop to board the persons waiting on a floor
+        if(numWaitingOnFloor > 0 && this.countPassengers() < CAPACITY) {  // loop to board the persons waiting on a floor
             for (int i = 0; i < numWaitingOnFloor; i++) {               // will only board waiting people up to the capacity limit
                 try {
                     this.boardPassenger(1);                         // people waiting go to floor 1.
@@ -107,7 +107,7 @@ public class Elevator {
      *
      */
     public void boardPassenger(int destinationFloorNumber) throws ElevatorFullException {
-        if(this.getPassengers() >= CAPACITY) {
+        if(this.countPassengers() >= CAPACITY) {
             throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
         }
         else {
@@ -119,13 +119,13 @@ public class Elevator {
      * The "getPassengers" method returns the total number of persons currently in the elevator.
      *
      */
-//    public int getPassengers() {
-//        int tempSum = 0;
-//        for (Floor tempFloor : myBuilding.allFloorsArray) {
-//            tempSum = tempSum + tempFloor.getNumPass();
-//        }
-//        return tempSum;
-//    }
+    public int countPassengers() {
+        int tempSum = 0;
+        for (Floor tempFloor : myBuilding.allFloorsArray) {
+            tempSum = tempSum + tempFloor.getNumPass();
+        }
+        return tempSum;
+    }
 
     public Set<Passenger> getPassengers() {
         Set<Passenger> mergedSet = new HashSet<Passenger>();
