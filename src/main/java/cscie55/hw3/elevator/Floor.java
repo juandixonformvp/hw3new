@@ -61,10 +61,29 @@ public class Floor {
      * Increments the isWaitingArray.
      *
      */
-    public void waitForElevator() {
-        this.isWaitingArray[this.myFloorNumber - 1]++;
+//    public void waitForElevator() {
+//        this.isWaitingArray[this.myFloorNumber - 1]++;
+//    }
+
+    public void waitForElevator(Passenger passenger, int destinationFloor) {
+        if (destinationFloor > this.myFloorNumber) {
+            upwardBound.add(passenger);
+        }
+        if (destinationFloor < this.myFloorNumber) {
+            downwardBound.add(passenger);
+        }
     }
 
+    public void enterGroundFloor(Passenger passenger) {
+        residents.add(passenger);
+    }
 
+    public boolean isResident(Passenger passenger) {
+        if(residents.contains(passenger)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

@@ -38,4 +38,8 @@ public class Building {
         return this.myElevator;
     }
 
+    public void enter(Passenger passenger) {
+        this.getFloor(1).enterGroundFloor(passenger);
+    }
+
 }
