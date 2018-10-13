@@ -8,6 +8,8 @@ package cscie55.hw3.elevator;
  */
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Elevator {
 
@@ -66,7 +68,7 @@ public class Elevator {
      */
     public void move() {
 
-        System.out.println("Before move: "+this.toString());    // checks status of elevator after boarding and before moving on
+//        System.out.println("Before move: "+this.toString());    // checks status of elevator after boarding and before moving on
         // Next block of code is unchanged from HW1, basic move functionality
         if (currentFloor == 1) {
             this.directionUp = true;
@@ -117,17 +119,28 @@ public class Elevator {
      * The "getPassengers" method returns the total number of persons currently in the elevator.
      *
      */
-    public int getPassengers() {
-        int tempSum = 0;
+//    public int getPassengers() {
+//        int tempSum = 0;
+//        for (Floor tempFloor : myBuilding.allFloorsArray) {
+//            tempSum = tempSum + tempFloor.getNumPass();
+//        }
+//        return tempSum;
+//    }
+
+    public Set<Passenger> getPassengers() {
+        Set<Passenger> mergedSet = new HashSet<Passenger>();
         for (Floor tempFloor : myBuilding.allFloorsArray) {
-            tempSum = tempSum + tempFloor.getNumPass();
+            mergedSet.addAll(tempFloor.getUpwardBound());
+            mergedSet.addAll(tempFloor.getDownwardBound());
         }
-        return tempSum;
-    }
+        return mergedSet;
 
-    public String toString(){
-        return "Floor: "+getCurrentFloor()+" Dir: "+getDirectionUp()+" NumPass: "+getPassengers();
 
     }
+
+//    public String toString(){
+//        return "Floor: "+getCurrentFloor()+" Dir: "+getDirectionUp()+" NumPass: "+getPassengers();
+//
+//    }
 
 }

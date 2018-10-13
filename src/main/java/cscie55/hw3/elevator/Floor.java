@@ -56,6 +56,14 @@ public class Floor {
         return this.myFloorNumber;
     }
 
+    protected Set<Passenger> getUpwardBound() {
+        return this.upwardBound;
+    }
+
+    protected Set<Passenger> getDownwardBound() {
+        return this.downwardBound;
+    }
+
     /**
      * This method basically "summons" the elevator.
      * Increments the isWaitingArray.
