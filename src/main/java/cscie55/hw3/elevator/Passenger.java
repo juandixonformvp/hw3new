@@ -28,11 +28,12 @@ public class Passenger {
 
     }
 
-    public void waitForElevator(int newDestinationFloor) {
-
+    public void waitForElevator(Passenger passenger, int newDestinationFloor) {
+        passenger.destinationFloor = newDestinationFloor;
     }
 
     public void boardElevator() {
+        this.currentFloor = -1;
 
     }
 

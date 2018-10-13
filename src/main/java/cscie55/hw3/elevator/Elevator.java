@@ -10,6 +10,7 @@ package cscie55.hw3.elevator;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Iterator;
 
 public class Elevator {
 
@@ -100,7 +101,16 @@ public class Elevator {
 //            }
 //        }
 
-        myBuilding.getFloor(this.currentFloor).getResidents();
+        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
+        Set tempResidents = myBuilding.getFloor(this.currentFloor).getResidents();
+        if (!tempResidents.isEmpty() && this.countPassengers() < CAPACITY) {
+            Iterator<Passenger> it = tempResidents.iterator();
+            while(it.hasNext()){
+                Passenger p  = it.next();
+                p.boardElevator();
+            }
+
+        }
 
 
 

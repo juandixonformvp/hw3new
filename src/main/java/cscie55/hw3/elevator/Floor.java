@@ -79,19 +79,19 @@ public class Floor {
 
     public void waitForElevator(Passenger passenger, int destinationFloor) {
         if (destinationFloor > this.myFloorNumber) {
-            upwardBound.add(passenger);
+            this.upwardBound.add(passenger);
         }
         if (destinationFloor < this.myFloorNumber) {
-            downwardBound.add(passenger);
+            this.downwardBound.add(passenger);
         }
     }
 
     public void enterGroundFloor(Passenger passenger) {
-        residents.add(passenger);
+        this.residents.add(passenger);
     }
 
     public boolean isResident(Passenger passenger) {
-        if(residents.contains(passenger)) {
+        if(this.residents.contains(passenger)) {
             return true;
         } else {
             return false;
