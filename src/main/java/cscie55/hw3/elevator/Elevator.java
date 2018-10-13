@@ -86,19 +86,23 @@ public class Elevator {
             this.currentFloor--;
         }
 
-        myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
-        int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
-        if(numWaitingOnFloor > 0 && this.countPassengers() < CAPACITY) {  // loop to board the persons waiting on a floor
-            for (int i = 0; i < numWaitingOnFloor; i++) {               // will only board waiting people up to the capacity limit
-                try {
-                    this.boardPassenger(1);                         // people waiting go to floor 1.
-                    myBuilding.getFloor(this.currentFloor).clearIsWaitingArray(); // for each person boarded, decrement waiting array
-                }
-                catch(ElevatorFullException e) {
-                    break;
-                }
-            }
-        }
+//        myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
+//        int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
+//        if(numWaitingOnFloor > 0 && this.countPassengers() < CAPACITY) {  // loop to board the persons waiting on a floor
+//            for (int i = 0; i < numWaitingOnFloor; i++) {               // will only board waiting people up to the capacity limit
+//                try {
+//                    this.boardPassenger(1);                         // people waiting go to floor 1.
+//                    myBuilding.getFloor(this.currentFloor).clearIsWaitingArray(); // for each person boarded, decrement waiting array
+//                }
+//                catch(ElevatorFullException e) {
+//                    break;
+//                }
+//            }
+//        }
+
+        myBuilding.getFloor(this.currentFloor).getResidents();
+
+
 
     }
 
@@ -106,14 +110,14 @@ public class Elevator {
      * The "boardPassenger" method adds to the Elevator one passenger destined for the indicated floor.
      *
      */
-    public void boardPassenger(int destinationFloorNumber) throws ElevatorFullException {
-        if(this.countPassengers() >= CAPACITY) {
-            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
-        }
-        else {
-            myBuilding.getFloor(destinationFloorNumber).setNumPass();
-        }
-    }
+//    public void boardPassenger(int destinationFloorNumber) throws ElevatorFullException {
+//        if(this.countPassengers() >= CAPACITY) {
+//            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
+//        }
+//        else {
+//            myBuilding.getFloor(destinationFloorNumber).setNumPass();
+//        }
+//    }
 
     /**
      * The "getPassengers" method returns the total number of persons currently in the elevator.

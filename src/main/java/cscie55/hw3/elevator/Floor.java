@@ -64,6 +64,10 @@ public class Floor {
         return this.downwardBound;
     }
 
+    protected Set<Passenger> getResidents() {
+        return this.residents;
+    }
+
     /**
      * This method basically "summons" the elevator.
      * Increments the isWaitingArray.
