@@ -10,9 +10,12 @@ package cscie55.hw3.elevator;
 public class Passenger {
     private int currentFloor;
     private int destinationFloor;
+    private int id;
 
     public Passenger(int id) {
-
+        this.id = id;
+        this.currentFloor = 1;
+        this.destinationFloor = -1;
     }
 
     public int getCurrentFloor() {

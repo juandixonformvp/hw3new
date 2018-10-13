@@ -17,9 +17,9 @@ public class Floor {
     public int isWaitingArray[] = new int[Building.FLOORS];
     public int numPass;
     public int myFloorNumber;
-    private Set<String> residents = new HashSet<>();
-    private Set<String> upwardBound = new HashSet<>();
-    private Set<String> downwardBound = new HashSet<>();
+    private Set<Passenger> residents = new HashSet<>();
+    private Set<Passenger> upwardBound = new HashSet<>();
+    private Set<Passenger> downwardBound = new HashSet<>();
 
     /** Initializes the current floor, and direction.
      * Class variables description -
@@ -64,5 +64,7 @@ public class Floor {
     public void waitForElevator() {
         this.isWaitingArray[this.myFloorNumber - 1]++;
     }
+
+
 
 }
