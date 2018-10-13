@@ -16,6 +16,8 @@ public class Elevator {
     public static final int CAPACITY = 10;
     private int currentFloor;
     private boolean directionUp;
+    private boolean goingUp;
+    private boolean goingDown;
     private Building myBuilding;
 
     /** Initializes the current floor, and direction.
@@ -36,6 +38,24 @@ public class Elevator {
 
     public boolean getDirectionUp() {
         return this.directionUp;
+    }
+
+    public boolean goingUp() {
+        if (this.directionUp) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
+    public boolean goingDown() {
+        if (!this.directionUp) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
