@@ -9,12 +9,17 @@ package cscie55.hw3.elevator;
  */
 
 //import java.util.stream.*;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Floor {
 
     public int isWaitingArray[] = new int[Building.FLOORS];
     public int numPass;
     public int myFloorNumber;
+    private Set<String> residents = new HashSet<>();
+    private Set<String> upwardBound = new HashSet<>();
+    private Set<String> downwardBound = new HashSet<>();
 
     /** Initializes the current floor, and direction.
      * Class variables description -
