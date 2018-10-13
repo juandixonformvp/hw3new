@@ -170,6 +170,13 @@ public class Elevator {
             mergedSet.addAll(tempFloor.getUpwardBound());
             mergedSet.addAll(tempFloor.getDownwardBound());
         }
+        Iterator<Passenger> it = mergedSet.iterator();
+        while(it.hasNext()){
+            Passenger p = it.next();
+            if (p.getCurrentFloor() == this.currentFloor) {
+                it.remove();
+            }
+        }
         return mergedSet;
 
 
