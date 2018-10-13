@@ -106,8 +106,14 @@ public class Elevator {
         if (!tempResidents.isEmpty() && this.countPassengers() < CAPACITY) {
             Iterator<Passenger> it = tempResidents.iterator();
             while(it.hasNext()){
-                Passenger p  = it.next();
-                p.boardElevator();
+                try {
+                    Passenger p = it.next();
+                    p.boardElevator();
+                    this.addToCount(p.getDestinationFloor());
+                }
+                catch(ElevatorFullException e) {
+                    break;
+                }
             }
 
         }
@@ -128,6 +134,16 @@ public class Elevator {
 //            myBuilding.getFloor(destinationFloorNumber).setNumPass();
 //        }
 //    }
+
+
+    public void addToCount(int destinationFloorNumber) throws ElevatorFullException {
+        if(this.countPassengers() >= CAPACITY) {
+            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
+        }
+        else {
+            myBuilding.getFloor(destinationFloorNumber).setNumPass();
+        }
+    }
 
     /**
      * The "getPassengers" method returns the total number of persons currently in the elevator.

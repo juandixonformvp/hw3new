@@ -34,7 +34,6 @@ public class Passenger {
 
     public void boardElevator() {
         this.currentFloor = -1;
-
     }
 
     public void arrive() {

@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class Floor {
 
-    public int isWaitingArray[] = new int[Building.FLOORS];
+//    public int isWaitingArray[] = new int[Building.FLOORS];
     public int numPass;
     public int myFloorNumber;
     private Set<Passenger> residents = new HashSet<>();
@@ -32,9 +32,9 @@ public class Floor {
         this.myFloorNumber = floorNumber + 1; // add 1 because it is initialized by an index to an array
     }
 
-    public int getPassengersWaiting() {
-        return this.isWaitingArray[this.myFloorNumber - 1];
-    }
+//    public int getPassengersWaiting() {
+//        return this.isWaitingArray[this.myFloorNumber - 1];
+//    }
 
     protected void setNumPass() {
         this.numPass++;
@@ -44,9 +44,9 @@ public class Floor {
         this.numPass = 0;
     }
 
-    protected void clearIsWaitingArray() {     // as waiting passengers board, it is necessary to decrement the isWaitingArray
-        this.isWaitingArray[this.myFloorNumber - 1]--;
-    }
+//    protected void clearIsWaitingArray() {     // as waiting passengers board, it is necessary to decrement the isWaitingArray
+//        this.isWaitingArray[this.myFloorNumber - 1]--;
+//    }
 
     protected int getNumPass() {
         return this.numPass;
