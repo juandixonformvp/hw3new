@@ -71,21 +71,7 @@ public class Elevator {
 
 //        System.out.println("Before move: "+this.toString());    // checks status of elevator after boarding and before moving on
         // Next block of code is unchanged from HW1, basic move functionality
-        if (currentFloor == 1) {
-            this.directionUp = true;
-        }
 
-        if (currentFloor == Building.FLOORS) {
-            this.directionUp = false;
-        }
-
-        if (directionUp == true) {
-            this.currentFloor++;
-        }
-
-        else {
-            this.currentFloor--;
-        }
 
 //        myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
 //        int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
@@ -123,6 +109,23 @@ public class Elevator {
                 }
             }
 
+        }
+
+
+        if (currentFloor == 1) {
+            this.directionUp = true;
+        }
+
+        if (currentFloor == Building.FLOORS) {
+            this.directionUp = false;
+        }
+
+        if (directionUp == true) {
+            this.currentFloor++;
+        }
+
+        else {
+            this.currentFloor--;
         }
 
 
