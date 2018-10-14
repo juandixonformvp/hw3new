@@ -34,10 +34,6 @@ public class Floor {
         this.myFloorNumber = floorNumber + 1; // add 1 because it is initialized by an index to an array
     }
 
-//    public int getPassengersWaiting() {
-//        return this.isWaitingArray[this.myFloorNumber - 1];
-//    }
-
     protected void setNumPass() {
         this.numPass++;
     }
@@ -45,10 +41,6 @@ public class Floor {
     protected void clearNumPass() {
         this.numPass = 0;
     }
-
-//    protected void clearIsWaitingArray() {     // as waiting passengers board, it is necessary to decrement the isWaitingArray
-//        this.isWaitingArray[this.myFloorNumber - 1]--;
-//    }
 
     protected int getNumPass() {
         return this.numPass;
@@ -79,9 +71,6 @@ public class Floor {
      * Increments the isWaitingArray.
      *
      */
-//    public void waitForElevator() {
-//        this.isWaitingArray[this.myFloorNumber - 1]++;
-//    }
 
     public void waitForElevator(Passenger passenger, int destinationFloor) {
         if (destinationFloor > this.myFloorNumber) {

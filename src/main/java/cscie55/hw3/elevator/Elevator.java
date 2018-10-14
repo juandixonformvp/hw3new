@@ -113,10 +113,7 @@ public class Elevator {
             }
         }
 
-
     }
-
-
 
 
     /**
@@ -125,27 +122,10 @@ public class Elevator {
      */
 
 
-
-    public void addToCount(int destinationFloorNumber) throws ElevatorFullException {
-        if(this.countPassengers() >= CAPACITY) {
-            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
-        }
-        else {
-            myBuilding.getFloor(destinationFloorNumber).setNumPass();
-        }
-    }
-
     /**
      * The "getPassengers" method returns the total number of persons currently in the elevator.
      *
      */
-    public int countPassengers() {
-        int tempSum = 0;
-        for (Floor tempFloor : myBuilding.allFloorsArray) {
-            tempSum = tempSum + tempFloor.getNumPass();
-        }
-        return tempSum;
-    }
 
     public Set<Passenger> getPassengers() {
         Set<Passenger> mergedSet = new HashSet<Passenger>();
@@ -155,10 +135,8 @@ public class Elevator {
         return mergedSet;
     }
 
-
-//    public String toString(){
-//        return "Floor: "+getCurrentFloor()+" Dir: "+getDirectionUp()+" NumPass: "+getPassengers();
-//
-//    }
+    public String toString(){
+        return "Floor: "+getCurrentFloor()+" Dir: "+getDirectionUp();
+    }
 
 }
