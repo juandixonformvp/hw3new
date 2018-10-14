@@ -67,9 +67,6 @@ public class Elevator {
      */
     public void move() {
 
-
-
-
         // Next block of code is unchanged from HW1, basic move functionality
         if (currentFloor == 1) {
             this.directionUp = true;
@@ -94,10 +91,11 @@ public class Elevator {
                 Passenger p = it.next();
                 myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
             }
-            myBuilding.getFloor(this.currentFloor).getUpwardBound().clear();
+            tempBoarders.clear();
         }
 
         if (!this.getPassengers().isEmpty() && this.currentFloor != 1) {
+
             Iterator<Passenger> it = this.getPassengers().iterator();
             while (it.hasNext()) {
                 Passenger p = it.next();
@@ -107,6 +105,23 @@ public class Elevator {
                     myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
                 }
             }
+        }
+
+        if (this.currentFloor != 1) {
+
+            Set<Passenger> tempBoarders = new HashSet<>();
+            if (this.goingUp()) {
+                tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+            } else {
+                tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+            }
+            Iterator<Passenger> itb = tempBoarders.iterator();
+            while (itb.hasNext()) {
+                Passenger p = itb.next();
+                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+            }
+            tempBoarders.clear();
+
         }
 
 
