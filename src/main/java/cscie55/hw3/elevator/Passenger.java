@@ -37,7 +37,8 @@ public class Passenger {
     }
 
     public void arrive() {
-
+        this.currentFloor = this.destinationFloor;
+        this.destinationFloor = -1;
     }
 
     public String toString(){

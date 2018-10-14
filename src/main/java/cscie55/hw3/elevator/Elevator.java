@@ -128,7 +128,13 @@ public class Elevator {
         //code to arrive at a floor
         myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
 
-        Set<Passenger> tempArrivers = this.getPassengers();
+        Set<Passenger> tempArrivers = new HashSet<>();
+        if (this.goingUp()) {
+            tempArrivers = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+        }
+        else {
+            tempArrivers = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+        }
         Iterator<Passenger> it = tempArrivers.iterator();
         while(it.hasNext()){
             Passenger p = it.next();
