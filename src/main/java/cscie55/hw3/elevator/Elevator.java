@@ -83,18 +83,18 @@ public class Elevator {
         }
 
 
-        if (this.currentFloor == 1) {
-            Set<Passenger> tempBoarders = new HashSet<>();
-            tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
-            Iterator<Passenger> it = tempBoarders.iterator();
-            while (it.hasNext()) {
-                Passenger p = it.next();
-                if (this.getPassengers().size() < CAPACITY) {
-                    myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
-                }
-            }
-            tempBoarders.clear();
-        }
+//        if (this.currentFloor == 1) {
+//            Set<Passenger> tempBoarders = new HashSet<>();
+//            tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+//            Iterator<Passenger> it = tempBoarders.iterator();
+//            while (it.hasNext()) {
+//                Passenger p = it.next();
+//                if (this.getPassengers().size() < CAPACITY) {
+//                    myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+//                }
+//            }
+//            tempBoarders.clear();
+//        }
 
         if (!this.getPassengers().isEmpty()) {
 
@@ -109,10 +109,10 @@ public class Elevator {
             }
         }
 
-        if (this.currentFloor != 1) {
+//        if (this.currentFloor != 1) {
 
             Set<Passenger> tempBoarders = new HashSet<>();
-            if (this.goingUp()) {
+            if (this.goingUp() || this.currentFloor == 1) {
                 tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
             } else {
                 tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
@@ -126,7 +126,7 @@ public class Elevator {
             }
             tempBoarders.clear();
 
-        }
+//        }
 
 
 
