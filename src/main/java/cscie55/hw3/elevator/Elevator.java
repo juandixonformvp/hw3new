@@ -107,10 +107,12 @@ public class Elevator {
         Iterator<Passenger> itb = tempBoarders.iterator();
         while (itb.hasNext()) {
             Passenger p = itb.next();
-            if (this.getPassengers().size() < CAPACITY) {
-//                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+            try {
                 boardPassenger(p);
                 itb.remove();
+            }
+            catch(ElevatorFullException e) {
+                break;
             }
         }
 
@@ -137,8 +139,13 @@ public class Elevator {
     }
 
 
-    public void boardPassenger(Passenger p) {
-        this.myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+    public void boardPassenger(Passenger p) throws ElevatorFullException {
+        if(this.getPassengers().size() >= CAPACITY) {
+            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
+        }
+        else {
+            this.myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+        }
     }
 
     public String toString(){
