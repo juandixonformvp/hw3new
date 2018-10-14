@@ -109,9 +109,9 @@ public class Elevator {
             Passenger p = itb.next();
             if (this.getPassengers().size() < CAPACITY) {
                 myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                itb.remove();
             }
         }
-        tempBoarders.clear();
 
 
     }

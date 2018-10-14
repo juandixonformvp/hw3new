@@ -10,6 +10,7 @@ package cscie55.hw3.elevator;
 
 //import java.util.stream.*;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Floor {
@@ -18,8 +19,8 @@ public class Floor {
     public int numPass;
     public int myFloorNumber;
     private Set<Passenger> residents = new HashSet<>();
-    private Set<Passenger> upwardBound = new HashSet<>();
-    private Set<Passenger> downwardBound = new HashSet<>();
+    private Set<Passenger> upwardBound = new LinkedHashSet<>();
+    private Set<Passenger> downwardBound = new LinkedHashSet<>();
     private Set<Passenger> inElevator = new HashSet<>();
 
     /** Initializes the current floor, and direction.

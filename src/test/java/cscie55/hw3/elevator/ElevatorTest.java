@@ -182,61 +182,61 @@ public class ElevatorTest
         assertTrue(building.getFloor(6).isResident(p5));
     }
 
-//    // Check handling of a full elevator.
-//    @Test
-//    public void elevatorFull() throws ElevatorFullException
-//    {
-//        Building building = new Building();
-//        // Create 15 passengers. (Capacity is 10, so not everyone will fit).
-//        // They all want to go to 4.
-//        Floor groundFloor = building.getFloor(1);
-//        assertEquals(10, Elevator.CAPACITY);
-//        final int PASSENGERS = 15;
-//        Passenger[] p = new Passenger[PASSENGERS];
-//        for (int id = 0; id < PASSENGERS; id++) {
-//            p[id] = new Passenger(id);
-//            building.enter(p[id]);
-//            groundFloor.waitForElevator(p[id], 4);
-//        }
-//        // Load to elevator capacity
-//        Elevator elevator = building.getElevator();
-//        roundTrip(elevator); // Passengers board after elevator GOES to first floor.
-//        // Starting on the ground floor won't do it.
-//        checkElevator(elevator, 1, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);
-//        // After a round trip (1 -> 7 -> 1), the first passengers who boarded should be on 4,
-//        // and the elevator should have the remaining passengers.
-//        roundTrip(elevator);
-//        Floor floor4 = building.getFloor(4);
-//        checkElevator(elevator, 1, p[10], p[11], p[12], p[13], p[14]);
-//        assertTrue(floor4.isResident(p[0]));
-//        assertTrue(floor4.isResident(p[1]));
-//        assertTrue(floor4.isResident(p[2]));
-//        assertTrue(floor4.isResident(p[3]));
-//        assertTrue(floor4.isResident(p[4]));
-//        assertTrue(floor4.isResident(p[5]));
-//        assertTrue(floor4.isResident(p[6]));
-//        assertTrue(floor4.isResident(p[7]));
-//        assertTrue(floor4.isResident(p[8]));
-//        assertTrue(floor4.isResident(p[9]));
-//        // After one more round trip, everyone should be on 4.
-//        roundTrip(elevator);
-//        checkElevator(elevator, 1);
-//        assertTrue(floor4.isResident(p[0]));
-//        assertTrue(floor4.isResident(p[1]));
-//        assertTrue(floor4.isResident(p[2]));
-//        assertTrue(floor4.isResident(p[3]));
-//        assertTrue(floor4.isResident(p[4]));
-//        assertTrue(floor4.isResident(p[5]));
-//        assertTrue(floor4.isResident(p[6]));
-//        assertTrue(floor4.isResident(p[7]));
-//        assertTrue(floor4.isResident(p[8]));
-//        assertTrue(floor4.isResident(p[9]));
-//        assertTrue(floor4.isResident(p[10]));
-//        assertTrue(floor4.isResident(p[11]));
-//        assertTrue(floor4.isResident(p[12]));
-//        assertTrue(floor4.isResident(p[13]));
-//        assertTrue(floor4.isResident(p[14]));
-//    }
+    // Check handling of a full elevator.
+    @Test
+    public void elevatorFull() throws ElevatorFullException
+    {
+        Building building = new Building();
+        // Create 15 passengers. (Capacity is 10, so not everyone will fit).
+        // They all want to go to 4.
+        Floor groundFloor = building.getFloor(1);
+        assertEquals(10, Elevator.CAPACITY);
+        final int PASSENGERS = 15;
+        Passenger[] p = new Passenger[PASSENGERS];
+        for (int id = 0; id < PASSENGERS; id++) {
+            p[id] = new Passenger(id);
+            building.enter(p[id]);
+            groundFloor.waitForElevator(p[id], 4);
+        }
+        // Load to elevator capacity
+        Elevator elevator = building.getElevator();
+        roundTrip(elevator); // Passengers board after elevator GOES to first floor.
+        // Starting on the ground floor won't do it.
+        checkElevator(elevator, 1, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);
+        // After a round trip (1 -> 7 -> 1), the first passengers who boarded should be on 4,
+        // and the elevator should have the remaining passengers.
+        roundTrip(elevator);
+        Floor floor4 = building.getFloor(4);
+        checkElevator(elevator, 1, p[10], p[11], p[12], p[13], p[14]);
+        assertTrue(floor4.isResident(p[0]));
+        assertTrue(floor4.isResident(p[1]));
+        assertTrue(floor4.isResident(p[2]));
+        assertTrue(floor4.isResident(p[3]));
+        assertTrue(floor4.isResident(p[4]));
+        assertTrue(floor4.isResident(p[5]));
+        assertTrue(floor4.isResident(p[6]));
+        assertTrue(floor4.isResident(p[7]));
+        assertTrue(floor4.isResident(p[8]));
+        assertTrue(floor4.isResident(p[9]));
+        // After one more round trip, everyone should be on 4.
+        roundTrip(elevator);
+        checkElevator(elevator, 1);
+        assertTrue(floor4.isResident(p[0]));
+        assertTrue(floor4.isResident(p[1]));
+        assertTrue(floor4.isResident(p[2]));
+        assertTrue(floor4.isResident(p[3]));
+        assertTrue(floor4.isResident(p[4]));
+        assertTrue(floor4.isResident(p[5]));
+        assertTrue(floor4.isResident(p[6]));
+        assertTrue(floor4.isResident(p[7]));
+        assertTrue(floor4.isResident(p[8]));
+        assertTrue(floor4.isResident(p[9]));
+        assertTrue(floor4.isResident(p[10]));
+        assertTrue(floor4.isResident(p[11]));
+        assertTrue(floor4.isResident(p[12]));
+        assertTrue(floor4.isResident(p[13]));
+        assertTrue(floor4.isResident(p[14]));
+    }
 
     private void roundTrip(Elevator elevator)
     {
