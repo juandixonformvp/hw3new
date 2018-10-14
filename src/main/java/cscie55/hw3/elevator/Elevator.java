@@ -96,6 +96,16 @@ public class Elevator {
             }
         }
 
+        if (!this.getPassengers().isEmpty() && this.currentFloor != 1) {
+            Iterator<Passenger> it = this.getPassengers().iterator();
+            while (it.hasNext()) {
+                Passenger p = it.next();
+                if (p.getDestinationFloor() == this.currentFloor) {
+                    myBuilding.getFloor(this.currentFloor).getInElevator().remove(p);
+                    p.arrive();
+                }
+            }
+        }
 
 
 
