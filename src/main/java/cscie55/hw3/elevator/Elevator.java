@@ -94,7 +94,7 @@ public class Elevator {
             tempBoarders.clear();
         }
 
-        if (!this.getPassengers().isEmpty() && this.currentFloor != 1) {
+        if (!this.getPassengers().isEmpty()) {
 
             Iterator<Passenger> it = this.getPassengers().iterator();
             while (it.hasNext()) {
