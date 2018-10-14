@@ -94,6 +94,7 @@ public class Elevator {
                 Passenger p = it.next();
                 myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
             }
+            myBuilding.getFloor(this.currentFloor).getUpwardBound().clear();
         }
 
         if (!this.getPassengers().isEmpty() && this.currentFloor != 1) {
