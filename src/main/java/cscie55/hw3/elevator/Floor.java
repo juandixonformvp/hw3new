@@ -98,15 +98,8 @@ public class Floor {
 
 
     public void goInElevator(Passenger passenger, int destinationFloor) {
-        if (destinationFloor > this.myFloorNumber) {
             passenger.boardElevator();
             this.inElevator.add(passenger);
-
-        }
-        if (destinationFloor < this.myFloorNumber) {
-            passenger.boardElevator();
-            this.inElevator.add(passenger);
-        }
     }
 
 

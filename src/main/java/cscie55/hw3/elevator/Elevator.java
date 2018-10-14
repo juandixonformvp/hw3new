@@ -92,7 +92,7 @@ public class Elevator {
             Iterator<Passenger> it = tempBoarders.iterator();
             while (it.hasNext()) {
                 Passenger p = it.next();
-                myBuilding.getFloor(this.currentFloor).goInElevator(p, p.getDestinationFloor());
+                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
             }
         }
 
