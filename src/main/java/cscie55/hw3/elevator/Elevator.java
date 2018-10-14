@@ -100,6 +100,12 @@ public class Elevator {
                     Passenger p = it.next();
                     p.boardElevator();
                     this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
+
+                    if (p.getDestinationFloor() == this.currentFloor) {
+                        p.arrive();
+                        myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
+                    }
+
                 }
                 catch(ElevatorFullException e) {
                     break;
@@ -128,23 +134,23 @@ public class Elevator {
         //code to arrive at a floor
         myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
 
-        Set<Passenger> tempArrivers = new HashSet<>();
-        if (this.goingUp()) {
-            tempArrivers = myBuilding.getFloor(this.currentFloor).getUpwardBound();
-        }
-        else {
-            tempArrivers = myBuilding.getFloor(this.currentFloor).getDownwardBound();
-        }
-        Iterator<Passenger> it = tempArrivers.iterator();
-        while(it.hasNext()){
-            Passenger p = it.next();
-            if (p.getDestinationFloor() != this.currentFloor) {
-                it.remove();
-            }
-            p.arrive();
-            myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
+//        Set<Passenger> tempArrivers = new HashSet<>();
+//        if (this.goingUp()) {
+//            tempArrivers = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+//        }
+//        else {
+//            tempArrivers = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+//        }
+//        Iterator<Passenger> it = tempArrivers.iterator();
+//        while(it.hasNext()){
+//            Passenger p = it.next();
+//            if (p.getDestinationFloor() == this.currentFloor) {
+//                p.arrive();
+//                myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
+//            }
+//
+//        }
 
-        }
     }
 
     /**
