@@ -85,6 +85,7 @@ public class Elevator {
 //            }
 //        }
 
+
         Set<Passenger> tempBoarders = new HashSet<>();
         if (this.goingUp()) {
             tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
@@ -109,18 +110,6 @@ public class Elevator {
         }
 
 
-        Set tempArrivers = this.getPassengers();
-        Iterator<Passenger> it = tempArrivers.iterator();
-        while(it.hasNext()){
-            Passenger p = it.next();
-            if (p.getDestinationFloor() == this.currentFloor) {
-                p.arrive();
-                myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
-            }
-
-        }
-
-
         // Next block of code is unchanged from HW1, basic move functionality
         if (currentFloor == 1) {
             this.directionUp = true;
@@ -140,6 +129,26 @@ public class Elevator {
 
         //code to arrive at a floor
         myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
+
+//        Set<Passenger> tempArrivers = new HashSet<>();
+//        if (this.goingUp()) {
+//            tempArrivers = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+//        }
+//        else {
+//            tempArrivers = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+//        }
+//        Iterator<Passenger> it = tempArrivers.iterator();
+//        while(it.hasNext()){
+//            Passenger p = it.next();
+//            if (p.getDestinationFloor() == this.currentFloor) {
+//                p.arrive();
+//                myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
+//            }
+//
+//        }
+
+
+
 
 
 
