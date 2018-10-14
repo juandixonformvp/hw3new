@@ -103,6 +103,7 @@ public class Elevator {
                 if (p.getDestinationFloor() == this.currentFloor) {
                     myBuilding.getFloor(this.currentFloor).getInElevator().remove(p);
                     p.arrive();
+                    myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
                 }
             }
         }
