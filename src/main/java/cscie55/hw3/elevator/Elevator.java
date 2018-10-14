@@ -70,8 +70,6 @@ public class Elevator {
     public void move() {
 
 //        System.out.println("Before move: "+this.toString());    // checks status of elevator after boarding and before moving on
-        // Next block of code is unchanged from HW1, basic move functionality
-
 
 //        myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
 //        int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
@@ -87,7 +85,6 @@ public class Elevator {
 //            }
 //        }
 
-        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
         Set<Passenger> tempBoarders = new HashSet<>();
         if (this.goingUp()) {
             tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
@@ -111,7 +108,7 @@ public class Elevator {
 
         }
 
-
+        // Next block of code is unchanged from HW1, basic move functionality
         if (currentFloor == 1) {
             this.directionUp = true;
         }
@@ -128,8 +125,20 @@ public class Elevator {
             this.currentFloor--;
         }
 
+        //code to arrive at a floor
+        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
 
+        Set<Passenger> tempArrivers = this.getPassengers();
+        Iterator<Passenger> it = tempArrivers.iterator();
+        while(it.hasNext()){
+            Passenger p = it.next();
+            if (p.getDestinationFloor() != this.currentFloor) {
+                it.remove();
+            }
+            p.arrive();
+            myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
 
+        }
     }
 
     /**
