@@ -81,64 +81,49 @@ public class Elevator {
 
         if (directionUp == true) {
             this.currentFloor++;
-        }
-
-        else {
+        } else {
             this.currentFloor--;
         }
 
-        //code to arrive at a floor
-//        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
 
-
-
-        Set<Passenger> tempBoarders = new HashSet<>();
         if (this.currentFloor == 1) {
+            Set<Passenger> tempBoarders = new HashSet<>();
             tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
-        }
-//        else {
-//            tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
-//        }
-
-//        if (!tempBoarders.isEmpty() && this.countPassengers() < CAPACITY) {
-        if (!tempBoarders.isEmpty()) {
             Iterator<Passenger> it = tempBoarders.iterator();
-            while(it.hasNext()){
-                try {
-                    Passenger p = it.next();
-                    myBuilding.getFloor(this.currentFloor).goInElevator(p, p.getDestinationFloor());
-                    this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
-                }
-                catch(ElevatorFullException e) {
-                    break;
-                }
+            while (it.hasNext()) {
+                Passenger p = it.next();
+                myBuilding.getFloor(this.currentFloor).goInElevator(p, p.getDestinationFloor());
             }
-
         }
 
 
 
 
 
-//        Set<Passenger> tempArrivers = new HashSet<>();
-//        if (this.goingUp()) {
-//            tempArrivers = myBuilding.getFloor(this.currentFloor).getUpwardBound();
-//        }
-//        else {
-//            tempArrivers = myBuilding.getFloor(this.currentFloor).getDownwardBound();
-//        }
-//        Iterator<Passenger> it = tempArrivers.iterator();
-//        while(it.hasNext()){
-//            Passenger p = it.next();
-//            if (p.getDestinationFloor() == this.currentFloor) {
-//                p.arrive();
-//                myBuilding.getFloor(this.currentFloor).enterGroundFloor(p);
-//            }
 //
-//        }
+//
+//
+//        if (!tempBoarders.isEmpty()) {
+//                Iterator<Passenger> it = tempBoarders.iterator();
+//                while (it.hasNext()) {
+//                    try {
+//                        Passenger p = it.next();
+//                        myBuilding.getFloor(this.currentFloor).goInElevator(p, p.getDestinationFloor());
+//                        this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
+//                    } catch (ElevatorFullException e) {
+//                        break;
+//                    }
+//                }
+//
+//            }
+
+
 
 
     }
+
+
+
 
     /**
      * The "boardPassenger" method adds to the Elevator one passenger destined for the indicated floor.
