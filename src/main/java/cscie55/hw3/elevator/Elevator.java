@@ -89,7 +89,9 @@ public class Elevator {
             Iterator<Passenger> it = tempBoarders.iterator();
             while (it.hasNext()) {
                 Passenger p = it.next();
-                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                if (this.getPassengers().size() < CAPACITY) {
+                    myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                }
             }
             tempBoarders.clear();
         }
@@ -118,7 +120,9 @@ public class Elevator {
             Iterator<Passenger> itb = tempBoarders.iterator();
             while (itb.hasNext()) {
                 Passenger p = itb.next();
-                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                if (this.getPassengers().size() < CAPACITY) {
+                    myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                }
             }
             tempBoarders.clear();
 

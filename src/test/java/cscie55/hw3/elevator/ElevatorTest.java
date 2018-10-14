@@ -9,94 +9,94 @@ import static org.junit.Assert.assertTrue;
 
 public class ElevatorTest
 {
-//    // Don't board any passengers. Just check that the elevator moves up and down correctly.
-//    @Test
-//    public void elevatorMotion()
-//    {
-//        Building building = new Building();
-//        Elevator elevator = building.getElevator();
-//        int expectedFloorNumber = 1;
-//        // Go to the top
-//        while (expectedFloorNumber < Building.FLOORS) {
-//            checkElevator(elevator, expectedFloorNumber);
-//            elevator.move();
-//            expectedFloorNumber++;
-//            checkElevator(elevator, expectedFloorNumber);
-//        }
-//        assertEquals(Building.FLOORS, expectedFloorNumber);
-//        // Go back to the bottom
-//        while (expectedFloorNumber > 1) {
-//            checkElevator(elevator, expectedFloorNumber);
-//            elevator.move();
-//            expectedFloorNumber--;
-//            checkElevator(elevator, expectedFloorNumber);
-//        }
-//        assertEquals(1, expectedFloorNumber);
-//    }
-//
-//    // Check that passengers get on and off correctly.
-//    @Test
-//    public void disembark() throws ElevatorFullException
-//    {
-//        Building building = new Building();
-//        // There are six passengers.
-//        Passenger p1 = new Passenger(1);
-//        Passenger p2 = new Passenger(2);
-//        Passenger p3 = new Passenger(3);
-//        Passenger p4 = new Passenger(4);
-//        Passenger p5 = new Passenger(5);
-//        Passenger p6 = new Passenger(6);
-//        // They enter the building (and become resident on the ground floor)
-//        building.enter(p1);
-//        building.enter(p2);
-//        building.enter(p3);
-//        building.enter(p4);
-//        building.enter(p5);
-//        building.enter(p6);
-//        Floor groundFloor = building.getFloor(1);
-//        assertTrue(groundFloor.isResident(p1));
-//        assertTrue(groundFloor.isResident(p2));
-//        assertTrue(groundFloor.isResident(p3));
-//        assertTrue(groundFloor.isResident(p4));
-//        assertTrue(groundFloor.isResident(p5));
-//        assertTrue(groundFloor.isResident(p6));
-//        Elevator elevator = building.getElevator();
-//        // Everyone wants to go up, to various floors.
-//        groundFloor.waitForElevator(p1, 3);
-//        groundFloor.waitForElevator(p2, 4);
-//        groundFloor.waitForElevator(p3, 4);
-//        groundFloor.waitForElevator(p4, 6);
-//        groundFloor.waitForElevator(p5, 6);
-//        groundFloor.waitForElevator(p6, 6);
-//        // No one is on the elevator yet
-//        checkElevator(elevator, 1);
-//        // The elevator goes up to the top and then down. It should stop on the ground floor and
-//        // board everyone.
-//        roundTrip(elevator);
-//        checkElevator(elevator, 1, p1, p2, p3, p4, p5, p6);
-//        elevator.move();
-//        checkElevator(elevator, 2, p1, p2, p3, p4, p5, p6);
-//        // p1 wanted to get off on 3
-//        elevator.move();
-//        checkElevator(elevator, 3, p2, p3, p4, p5, p6);
-//        // p2 and p3 wanted to get off on 4
-//        elevator.move();
-//        checkElevator(elevator, 4, p4, p5, p6);
-//        elevator.move();
-//        checkElevator(elevator, 5, p4, p5, p6);
-//        // Remaining passengers get off on 6
-//        elevator.move();
-//        checkElevator(elevator, 6);
-//        elevator.move();
-//        checkElevator(elevator, 7);
-//        // Check that everyone is where they should be
-//        assertTrue(building.getFloor(3).isResident(p1));
-//        assertTrue(building.getFloor(4).isResident(p2));
-//        assertTrue(building.getFloor(4).isResident(p3));
-//        assertTrue(building.getFloor(6).isResident(p4));
-//        assertTrue(building.getFloor(6).isResident(p5));
-//        assertTrue(building.getFloor(6).isResident(p6));
-//    }
+    // Don't board any passengers. Just check that the elevator moves up and down correctly.
+    @Test
+    public void elevatorMotion()
+    {
+        Building building = new Building();
+        Elevator elevator = building.getElevator();
+        int expectedFloorNumber = 1;
+        // Go to the top
+        while (expectedFloorNumber < Building.FLOORS) {
+            checkElevator(elevator, expectedFloorNumber);
+            elevator.move();
+            expectedFloorNumber++;
+            checkElevator(elevator, expectedFloorNumber);
+        }
+        assertEquals(Building.FLOORS, expectedFloorNumber);
+        // Go back to the bottom
+        while (expectedFloorNumber > 1) {
+            checkElevator(elevator, expectedFloorNumber);
+            elevator.move();
+            expectedFloorNumber--;
+            checkElevator(elevator, expectedFloorNumber);
+        }
+        assertEquals(1, expectedFloorNumber);
+    }
+
+    // Check that passengers get on and off correctly.
+    @Test
+    public void disembark() throws ElevatorFullException
+    {
+        Building building = new Building();
+        // There are six passengers.
+        Passenger p1 = new Passenger(1);
+        Passenger p2 = new Passenger(2);
+        Passenger p3 = new Passenger(3);
+        Passenger p4 = new Passenger(4);
+        Passenger p5 = new Passenger(5);
+        Passenger p6 = new Passenger(6);
+        // They enter the building (and become resident on the ground floor)
+        building.enter(p1);
+        building.enter(p2);
+        building.enter(p3);
+        building.enter(p4);
+        building.enter(p5);
+        building.enter(p6);
+        Floor groundFloor = building.getFloor(1);
+        assertTrue(groundFloor.isResident(p1));
+        assertTrue(groundFloor.isResident(p2));
+        assertTrue(groundFloor.isResident(p3));
+        assertTrue(groundFloor.isResident(p4));
+        assertTrue(groundFloor.isResident(p5));
+        assertTrue(groundFloor.isResident(p6));
+        Elevator elevator = building.getElevator();
+        // Everyone wants to go up, to various floors.
+        groundFloor.waitForElevator(p1, 3);
+        groundFloor.waitForElevator(p2, 4);
+        groundFloor.waitForElevator(p3, 4);
+        groundFloor.waitForElevator(p4, 6);
+        groundFloor.waitForElevator(p5, 6);
+        groundFloor.waitForElevator(p6, 6);
+        // No one is on the elevator yet
+        checkElevator(elevator, 1);
+        // The elevator goes up to the top and then down. It should stop on the ground floor and
+        // board everyone.
+        roundTrip(elevator);
+        checkElevator(elevator, 1, p1, p2, p3, p4, p5, p6);
+        elevator.move();
+        checkElevator(elevator, 2, p1, p2, p3, p4, p5, p6);
+        // p1 wanted to get off on 3
+        elevator.move();
+        checkElevator(elevator, 3, p2, p3, p4, p5, p6);
+        // p2 and p3 wanted to get off on 4
+        elevator.move();
+        checkElevator(elevator, 4, p4, p5, p6);
+        elevator.move();
+        checkElevator(elevator, 5, p4, p5, p6);
+        // Remaining passengers get off on 6
+        elevator.move();
+        checkElevator(elevator, 6);
+        elevator.move();
+        checkElevator(elevator, 7);
+        // Check that everyone is where they should be
+        assertTrue(building.getFloor(3).isResident(p1));
+        assertTrue(building.getFloor(4).isResident(p2));
+        assertTrue(building.getFloor(4).isResident(p3));
+        assertTrue(building.getFloor(6).isResident(p4));
+        assertTrue(building.getFloor(6).isResident(p5));
+        assertTrue(building.getFloor(6).isResident(p6));
+    }
 
 
 
@@ -181,7 +181,7 @@ public class ElevatorTest
         assertTrue(building.getFloor(6).isResident(p4));
         assertTrue(building.getFloor(6).isResident(p5));
     }
-//
+
 //    // Check handling of a full elevator.
 //    @Test
 //    public void elevatorFull() throws ElevatorFullException
@@ -199,7 +199,7 @@ public class ElevatorTest
 //            groundFloor.waitForElevator(p[id], 4);
 //        }
 //        // Load to elevator capacity
-//        Elevator elevator = building.elevator();
+//        Elevator elevator = building.getElevator();
 //        roundTrip(elevator); // Passengers board after elevator GOES to first floor.
 //        // Starting on the ground floor won't do it.
 //        checkElevator(elevator, 1, p[0], p[1], p[2], p[3], p[4], p[5], p[6], p[7], p[8], p[9]);

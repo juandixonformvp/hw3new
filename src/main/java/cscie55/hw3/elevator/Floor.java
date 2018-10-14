@@ -98,10 +98,9 @@ public class Floor {
 
 
     public void goInElevator(Passenger passenger, int destinationFloor) {
-            passenger.boardElevator();
-            this.inElevator.add(passenger);
+        passenger.boardElevator();
+        this.inElevator.add(passenger);
     }
-
 
 
     public void enterGroundFloor(Passenger passenger) {
