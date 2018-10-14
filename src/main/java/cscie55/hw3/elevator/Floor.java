@@ -20,6 +20,7 @@ public class Floor {
     private Set<Passenger> residents = new HashSet<>();
     private Set<Passenger> upwardBound = new HashSet<>();
     private Set<Passenger> downwardBound = new HashSet<>();
+    private Set<Passenger> inElevator = new HashSet<>();
 
     /** Initializes the current floor, and direction.
      * Class variables description -
@@ -68,6 +69,10 @@ public class Floor {
         return this.residents;
     }
 
+    protected Set<Passenger> getInElevator() {
+        return this.inElevator;
+    }
+
     /**
      * This method basically "summons" the elevator.
      * Increments the isWaitingArray.
@@ -81,13 +86,32 @@ public class Floor {
         if (destinationFloor > this.myFloorNumber) {
             passenger.waitForElevator(destinationFloor);
             this.upwardBound.add(passenger);
+            this.residents.remove(passenger);
 
         }
         if (destinationFloor < this.myFloorNumber) {
             passenger.waitForElevator(destinationFloor);
             this.downwardBound.add(passenger);
+            this.residents.remove(passenger);
         }
     }
+
+
+    public void goInElevator(Passenger passenger, int destinationFloor) {
+        if (destinationFloor > this.myFloorNumber) {
+            passenger.boardElevator();
+            this.upwardBound.remove(passenger);
+            this.inElevator.add(passenger);
+
+        }
+        if (destinationFloor < this.myFloorNumber) {
+            passenger.boardElevator();
+            this.downwardBound.remove(passenger);
+            this.inElevator.add(passenger);
+        }
+    }
+
+
 
     public void enterGroundFloor(Passenger passenger) {
         this.residents.add(passenger);

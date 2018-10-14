@@ -17,8 +17,6 @@ public class Elevator {
     public static final int CAPACITY = 10;
     private int currentFloor;
     private boolean directionUp;
-    private boolean goingUp;
-    private boolean goingDown;
     private Building myBuilding;
 
     /** Initializes the current floor, and direction.
@@ -69,45 +67,7 @@ public class Elevator {
      */
     public void move() {
 
-//        System.out.println("Before move: "+this.toString());    // checks status of elevator after boarding and before moving on
 
-//        myBuilding.getFloor(this.currentFloor).clearNumPass();  // empties passengers who should get off on current floor
-//        int numWaitingOnFloor = myBuilding.getFloor(this.currentFloor).getPassengersWaiting(); // counts number of waiting passengers
-//        if(numWaitingOnFloor > 0 && this.countPassengers() < CAPACITY) {  // loop to board the persons waiting on a floor
-//            for (int i = 0; i < numWaitingOnFloor; i++) {               // will only board waiting people up to the capacity limit
-//                try {
-//                    this.boardPassenger(1);                         // people waiting go to floor 1.
-//                    myBuilding.getFloor(this.currentFloor).clearIsWaitingArray(); // for each person boarded, decrement waiting array
-//                }
-//                catch(ElevatorFullException e) {
-//                    break;
-//                }
-//            }
-//        }
-
-
-        Set<Passenger> tempBoarders = new HashSet<>();
-        if (this.goingUp()) {
-            tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
-        }
-        else {
-            tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
-        }
-
-        if (!tempBoarders.isEmpty() && this.countPassengers() < CAPACITY) {
-            Iterator<Passenger> it = tempBoarders.iterator();
-            while(it.hasNext()){
-                try {
-                    Passenger p = it.next();
-                    p.boardElevator();
-                    this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
-                }
-                catch(ElevatorFullException e) {
-                    break;
-                }
-            }
-
-        }
 
 
         // Next block of code is unchanged from HW1, basic move functionality
@@ -128,7 +88,37 @@ public class Elevator {
         }
 
         //code to arrive at a floor
-        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
+//        myBuilding.getFloor(this.currentFloor).clearNumPass(); // clears count of passengers
+
+
+
+        Set<Passenger> tempBoarders = new HashSet<>();
+        if (this.currentFloor == 1) {
+            tempBoarders = myBuilding.getFloor(this.currentFloor).getUpwardBound();
+        }
+//        else {
+//            tempBoarders = myBuilding.getFloor(this.currentFloor).getDownwardBound();
+//        }
+
+//        if (!tempBoarders.isEmpty() && this.countPassengers() < CAPACITY) {
+        if (!tempBoarders.isEmpty()) {
+            Iterator<Passenger> it = tempBoarders.iterator();
+            while(it.hasNext()){
+                try {
+                    Passenger p = it.next();
+                    myBuilding.getFloor(this.currentFloor).goInElevator(p, p.getDestinationFloor());
+                    this.addToCount(p.getDestinationFloor()); //keeps a count of how many people are in elevator, by destination floor
+                }
+                catch(ElevatorFullException e) {
+                    break;
+                }
+            }
+
+        }
+
+
+
+
 
 //        Set<Passenger> tempArrivers = new HashSet<>();
 //        if (this.goingUp()) {
@@ -148,24 +138,13 @@ public class Elevator {
 //        }
 
 
-
-
-
-
     }
 
     /**
      * The "boardPassenger" method adds to the Elevator one passenger destined for the indicated floor.
      *
      */
-//    public void boardPassenger(int destinationFloorNumber) throws ElevatorFullException {
-//        if(this.countPassengers() >= CAPACITY) {
-//            throw new ElevatorFullException("Elevator is at full capacity. Please wait for the elevator to return.");
-//        }
-//        else {
-//            myBuilding.getFloor(destinationFloorNumber).setNumPass();
-//        }
-//    }
+
 
 
     public void addToCount(int destinationFloorNumber) throws ElevatorFullException {
@@ -192,18 +171,26 @@ public class Elevator {
     public Set<Passenger> getPassengers() {
         Set<Passenger> mergedSet = new HashSet<Passenger>();
         for (Floor tempFloor : myBuilding.allFloorsArray) {
-            mergedSet.addAll(tempFloor.getUpwardBound());
-            mergedSet.addAll(tempFloor.getDownwardBound());
-        }
-        Iterator<Passenger> it = mergedSet.iterator();
-        while(it.hasNext()){
-            Passenger p = it.next();
-            if (p.getCurrentFloor() != -1) {
-                it.remove();
-            }
+            mergedSet.addAll(tempFloor.getInElevator());
         }
         return mergedSet;
     }
+
+//    public Set<Passenger> getPassengers() {
+//        Set<Passenger> mergedSet = new HashSet<Passenger>();
+//        for (Floor tempFloor : myBuilding.allFloorsArray) {
+//            mergedSet.addAll(tempFloor.getUpwardBound());
+//            mergedSet.addAll(tempFloor.getDownwardBound());
+//        }
+//        Iterator<Passenger> it = mergedSet.iterator();
+//        while(it.hasNext()){
+//            Passenger p = it.next();
+//            if (p.getCurrentFloor() != -1) {
+//                it.remove();
+//            }
+//        }
+//        return mergedSet;
+//    }
 
 //    public String toString(){
 //        return "Floor: "+getCurrentFloor()+" Dir: "+getDirectionUp()+" NumPass: "+getPassengers();
