@@ -108,7 +108,8 @@ public class Elevator {
         while (itb.hasNext()) {
             Passenger p = itb.next();
             if (this.getPassengers().size() < CAPACITY) {
-                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+//                myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
+                boardPassenger(p);
                 itb.remove();
             }
         }
@@ -133,6 +134,11 @@ public class Elevator {
             mergedSet.addAll(tempFloor.getInElevator());
         }
         return mergedSet;
+    }
+
+
+    public void boardPassenger(Passenger p) {
+        this.myBuilding.getFloor(p.getDestinationFloor()).goInElevator(p, p.getDestinationFloor());
     }
 
     public String toString(){
