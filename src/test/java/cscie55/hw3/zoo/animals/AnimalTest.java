@@ -11,6 +11,10 @@ public class AnimalTest {
     @Test
     public void animalPrint() {
 
+        Animal lion1 = new Lion();
+        Animal lion2 = new Lion("liono",12, false);
+        System.out.println(lion1.toString());
+        System.out.println(lion2.toString());
     }
 
 }

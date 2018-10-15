@@ -35,6 +35,8 @@ public abstract class Animal implements Eatable, Speakable, Playable {
         this.name = name;
         this.age = age;
         this.male = male;
+        this.favoriteFoods.add("water");
+        this.diet = Diet.VEGGIE;
     }
 
     public String getName() {
@@ -98,6 +100,10 @@ public abstract class Animal implements Eatable, Speakable, Playable {
     public String play(String play_string){
         StringBuilder playing = new StringBuilder(play_string);
         return playing.toString();
+    }
+
+    public String toString(){
+        return getClass().getName()+"[name="+this.name+",age="+this.age+",male="+this.male+",favfood="+this.favoriteFoods.get(0)+",diet="+this.diet+"]";
     }
 
 
