@@ -7,7 +7,7 @@ public abstract class Animal {
     private String name;
     private int age;
     private boolean male;
-    ArrayList<String> favoriteFoods = new ArrayList<String>();
+    private ArrayList<String> favoriteFoods = new ArrayList<String>();
     public enum Diet { VEGGIE, MEAT, OMNI };
     Diet diet;
 
