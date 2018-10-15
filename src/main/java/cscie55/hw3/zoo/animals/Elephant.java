@@ -1,4 +1,7 @@
 package cscie55.hw3.zoo.animals;
 
-public class Elephant {
+import java.util.*;
+
+public class Elephant extends Animal {
+
 }

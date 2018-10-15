@@ -1,4 +1,6 @@
 package cscie55.hw3.zoo.animals;
 
-public class PolarBear {
+import java.util.*;
+
+public class PolarBear extends Animal {
 }

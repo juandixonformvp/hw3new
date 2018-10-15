@@ -11,6 +11,14 @@ public abstract class Animal {
     public enum Diet { VEGGIE, MEAT, OMNI };
     Diet diet;
 
+    public Animal(String name, int age, boolean male, ArrayList<String> favoriteFoods, Diet diet) {
+        this.name = name;
+        this.age = age;
+        this.male = male;
+        this.favoriteFoods = favoriteFoods;
+        this.diet = diet;
+    }
+
     public String getName() {
         return name;
     }

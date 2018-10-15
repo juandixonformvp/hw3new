@@ -1,4 +1,6 @@
 package cscie55.hw3.zoo.animals;
 
-public class Panda {
+import java.util.*;
+
+public class Panda extends Animal {
 }

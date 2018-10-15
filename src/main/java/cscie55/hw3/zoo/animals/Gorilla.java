@@ -1,4 +1,6 @@
 package cscie55.hw3.zoo.animals;
 
-public class Gorilla {
+import java.util.*;
+
+public class Gorilla extends Animal {
 }
