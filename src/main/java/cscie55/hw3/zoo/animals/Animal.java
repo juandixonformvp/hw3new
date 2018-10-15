@@ -77,5 +77,28 @@ public abstract class Animal implements Eatable, Speakable, Playable {
         this.diet = diet;
     }
 
+    @Override
+    public String eat(){
+        StringBuilder eating = new StringBuilder();
+        eating.append("Delightfully tasty ");
+        for(int i = 0; i < favoriteFoods.size(); i++) {
+            eating.append(favoriteFoods.get(i));
+            eating.append(i < favoriteFoods.size() - 1 ? ", " : ".");
+        }
+        return eating.toString();
+    }
+
+    @Override
+    public String speak(String speak_string){
+        StringBuilder speaking = new StringBuilder(speak_string);
+        return speaking.toString();
+    }
+
+    @Override
+    public String play(String play_string){
+        StringBuilder playing = new StringBuilder(play_string);
+        return playing.toString();
+    }
+
 
 }
