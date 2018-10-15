@@ -1,8 +1,11 @@
 package cscie55.hw3.zoo.animals;
 
 import java.util.*;
+import cscie55.hw3.zoo.iface.Eatable;
+import cscie55.hw3.zoo.iface.Playable;
+import cscie55.hw3.zoo.iface.Speakable;
 
-public abstract class Animal {
+public abstract class Animal implements Eatable, Speakable, Playable {
 
     private String name;
     private int age;
