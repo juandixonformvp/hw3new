@@ -11,12 +11,27 @@ public abstract class Animal {
     public enum Diet { VEGGIE, MEAT, OMNI };
     Diet diet;
 
+
+    public Animal() {
+        this.name = "Buddy";
+        this.age = 0;
+        this.male = true;
+        this.favoriteFoods.add("water");
+        this.diet = Diet.VEGGIE;
+    }
+
     public Animal(String name, int age, boolean male, ArrayList<String> favoriteFoods, Diet diet) {
         this.name = name;
         this.age = age;
         this.male = male;
         this.favoriteFoods = favoriteFoods;
         this.diet = diet;
+    }
+
+    public Animal(String name, int age, boolean male) {
+        this.name = name;
+        this.age = age;
+        this.male = male;
     }
 
     public String getName() {
