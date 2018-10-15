@@ -11,8 +11,8 @@ public class ElevatorTest
 {
     // Don't board any passengers. Just check that the elevator moves up and down correctly.
     @Test
-    public void elevatorMotion()
-    {
+    public void elevatorMotion() {
+
         Building building = new Building();
         Elevator elevator = building.getElevator();
         int expectedFloorNumber = 1;
