@@ -4,4 +4,8 @@ import java.util.*;
 
 public class Elephant extends Animal {
 
+    public Elephant(String name, int age, boolean male, ArrayList<String> favoriteFoods, Diet diet) {
+        super(name, age, male, favoriteFoods, diet);
+    }
+
 }
