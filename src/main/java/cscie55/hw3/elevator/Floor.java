@@ -18,10 +18,10 @@ public class Floor {
 //    public int isWaitingArray[] = new int[Building.FLOORS];
     public int numPass;
     public int myFloorNumber;
-    private Set<Passenger> residents = new HashSet<>();
+    private Set<Passenger> residents = new LinkedHashSet<>();
     private Set<Passenger> upwardBound = new LinkedHashSet<>();
     private Set<Passenger> downwardBound = new LinkedHashSet<>();
-    private Set<Passenger> inElevator = new HashSet<>();
+    private Set<Passenger> inElevator = new LinkedHashSet<>();
 
     /** Initializes the current floor, and direction.
      * Class variables description -
