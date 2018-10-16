@@ -120,12 +120,6 @@ public class Elevator {
 
 
     /**
-     * The "boardPassenger" method adds to the Elevator one passenger destined for the indicated floor.
-     *
-     */
-
-
-    /**
      * The "getPassengers" method returns the total number of persons currently in the elevator.
      *
      */
@@ -138,6 +132,10 @@ public class Elevator {
         return mergedSet;
     }
 
+    /**
+     * The "boardPassenger" method adds to the Elevator one passenger destined for the indicated floor.
+     *
+     */
 
     public void boardPassenger(Passenger p) throws ElevatorFullException {
         if(this.getPassengers().size() >= CAPACITY) {
