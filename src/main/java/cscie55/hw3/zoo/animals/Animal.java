@@ -39,6 +39,14 @@ public abstract class Animal implements Eatable, Speakable, Playable {
         this.diet = Diet.VEGGIE;
     }
 
+    public Animal(ArrayList<String> favoriteFoods, Diet diet) {
+        this.name = "Buddy";
+        this.age = 0;
+        this.male = true;
+        this.favoriteFoods = favoriteFoods;
+        this.diet = diet;
+    }
+
     public String getName() {
         return name;
     }
