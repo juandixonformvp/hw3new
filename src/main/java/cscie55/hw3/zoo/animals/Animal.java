@@ -4,6 +4,7 @@ import java.util.*;
 import cscie55.hw3.zoo.iface.Eatable;
 import cscie55.hw3.zoo.iface.Playable;
 import cscie55.hw3.zoo.iface.Speakable;
+import cscie55.hw3.zoo.iface.Trainable;
 
 public abstract class Animal implements Eatable, Speakable, Playable {
 

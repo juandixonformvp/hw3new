@@ -43,23 +43,13 @@ public class AnimalTest {
     }
 
     @Test
-    public void animalEat() {
+    public void animalSpeak() {
 
-        ArrayList<String> pbFoods = new ArrayList<String>();
-        pbFoods.add("fish");
-        pbFoods.add("seal");
-        pbFoods.add("walrus");
+        Animal trainElephant = new Elephant();
+        Animal trainGorilla = new Gorilla();
 
-        ArrayList<String> gorillaFoods = new ArrayList<String>();
-        gorillaFoods.add("bananas");
-        gorillaFoods.add("yams");
-        gorillaFoods.add("leaves");
-
-        Animal eatPolarBear = new PolarBear(pbFoods, Animal.Diet.MEAT);
-        Animal eatGorilla = new Gorilla(gorillaFoods, Animal.Diet.VEGGIE);
-
-        System.out.println(eatPolarBear.eat());
-        System.out.println(eatGorilla.eat());
+        System.out.println(trainElephant.speak("Learning to pick up logs."));
+        System.out.println(trainGorilla.speak("Learning sign language."));
     }
 
 }

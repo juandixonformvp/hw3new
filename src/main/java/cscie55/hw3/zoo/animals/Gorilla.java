@@ -1,11 +1,10 @@
 package cscie55.hw3.zoo.animals;
 
 import cscie55.hw3.zoo.iface.Speakable;
-import cscie55.hw3.zoo.iface.Trainable;
 
 import java.util.*;
 
-public class Gorilla extends Animal implements Speakable, Trainable {
+public class Gorilla extends Animal implements Speakable {
 
     public Gorilla() {
     }
@@ -20,12 +19,6 @@ public class Gorilla extends Animal implements Speakable, Trainable {
 
     public Gorilla(ArrayList<String> favoriteFoods, Diet diet) {
         super(favoriteFoods, diet);
-    }
-
-    @Override
-    public String train(String train_string){
-        StringBuilder training = new StringBuilder(train_string);
-        return training.toString();
     }
 
     @Override
